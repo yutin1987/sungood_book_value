@@ -21,6 +21,7 @@
         }, function(authResult) {
           if (authResult && !authResult.error) {
             console.log("Auth was successful!");
+            console.log(authResult);
           } else {
             console.log("Auth was not successful");
           }
@@ -42,7 +43,6 @@
           'max-results': 25
         });
         apiQuery.execute(handleCoreReportingResults);
-        console.log(apiQuery);
       }
 
       function handleCoreReportingResults(results) {
