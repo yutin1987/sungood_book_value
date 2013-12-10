@@ -11,7 +11,7 @@
       var clientId = '391877613342-8gcouc7ae00tol7janmdvne90l2oavb7.apps.googleusercontent.com';
       var apiKey = 'AIzaSyDmffFg_fSWYyzgwWKFFkDLv02JFKSUTbU';
       var scopes = 'https://www.googleapis.com/auth/compute';
-      var access_token = authResult.access_token;
+      var access_token;
 
       function loadLib(){
         gapi.client.setApiKey(apiKey);
@@ -22,6 +22,7 @@
         }, function(authResult) {
           if (authResult && !authResult.error) {
             console.log('is OK');
+            access_token = authResult.access_token;
             console.log(authResult.access_token);
             console.log("Auth was successful!");
           } else {
