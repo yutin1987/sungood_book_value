@@ -11,6 +11,7 @@
       var clientId = '391877613342-8gcouc7ae00tol7janmdvne90l2oavb7.apps.googleusercontent.com';
       var apiKey = 'AIzaSyDmffFg_fSWYyzgwWKFFkDLv02JFKSUTbU';
       var scopes = 'https://www.googleapis.com/auth/compute';
+      var access_token = authResult.access_token;
 
       function loadLib(){
         gapi.client.setApiKey(apiKey);
@@ -21,7 +22,7 @@
         }, function(authResult) {
           if (authResult && !authResult.error) {
             console.log('is OK');
-            console.log(authResult);
+            console.log(authResult.access_token);
             console.log("Auth was successful!");
           } else {
             console.log("Auth was not successful");
@@ -41,6 +42,7 @@
           'dimensions': 'ga:pageTitle',
           // 'sort': '-ga:visits,ga:source',
           // 'filters': 'ga:medium==organic',
+          'access_token': access_token,
           'max-results': 25
         });
         apiQuery.execute(handleCoreReportingResults);
