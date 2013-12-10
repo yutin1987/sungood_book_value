@@ -21,21 +21,17 @@
           immediate: false
         }, function(authResult) {
           if (authResult && !authResult.error) {
-            console.log('is OK');
-            access_token = authResult.access_token;
-            console.log(authResult.access_token);
             console.log("Auth was successful!");
+            access_token = authResult.access_token;
+            gapi.client.load('analytics', 'v3', makeApiCall);
           } else {
             console.log("Auth was not successful");
           }
         });
-
-        gapi.client.load('analytics', 'v3', makeApiCall);
-
       };
-      var apiQuery;
+
       function makeApiCall() {
-        apiQuery = gapi.client.analytics.data.ga.get({
+        var apiQuery = gapi.client.analytics.data.ga.get({
           'ids': 'ga:76589940',
           'start-date': '2013-11-26',
           'end-date': '2013-12-10',
@@ -51,7 +47,12 @@
 
       function handleCoreReportingResults(results) {
         if (!results.error) {
-          console.log(results);
+          $.each(results.result.rows, function(){
+            $('<div />').append(
+              $('<span />').text(this[0]),
+              $('<span />').text(this[1])
+            ).appendTo('body');
+          });
         } else {
           alert('There was an error: ' + results.message);
         }
@@ -61,6 +62,5 @@
     <script src="https://apis.google.com/js/client.js?onload=loadLib"></script>
   </head>
   <body>
-    Sungood_book_value
   </body>
 </html>
