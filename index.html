@@ -31,8 +31,9 @@
         gapi.client.load('analytics', 'v3', makeApiCall);
 
       };
+      var apiQuery;
       function makeApiCall() {
-        var apiQuery = gapi.client.analytics.data.ga.get({
+        apiQuery = gapi.client.analytics.data.ga.get({
           'ids': 'ga:76589940',
           'start-date': '2013-11-26',
           'end-date': '2013-12-10',
@@ -42,7 +43,16 @@
           // 'filters': 'ga:medium==organic',
           'max-results': 25
         });
+        apiQuery.execute(handleCoreReportingResults);
         console.log(apiQuery);
+      }
+
+      function handleCoreReportingResults(results) {
+        if (!results.error) {
+          console.log(results);
+        } else {
+          alert('There was an error: ' + results.message);
+        }
       }
     </script>
   </head>
