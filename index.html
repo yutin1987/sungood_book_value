@@ -50,7 +50,7 @@
           $.each(results.result.rows, function(){
             $('<div />').append(
               $('<span />').text(this[0]),
-              $('<span />').text(this[1])
+              $('<span />').text('    ('+this[1]+')')
             ).appendTo('body');
           });
         } else {
