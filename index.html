@@ -7,29 +7,43 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://apis.google.com/js/client.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=loadLib"></script>
     <script type="text/javascript">
       var projectId = 'quantum-ally-425';
       var clientId = '391877613342.apps.googleusercontent.com';
       var apiKey = 'AIzaSyCPjYO1RVFFwkjUDJXwJIgt4GM8Efd8_Pc';
       var scopes = 'https://www.googleapis.com/auth/compute';
 
-      $(function(){
+      function loadLib(){
         gapi.client.setApiKey(apiKey);
         gapi.auth.authorize({
           client_id: clientId,
           scope: scopes,
           immediate: false
         }, function(authResult) {
-             if (authResult && !authResult.error) {
-               console.log("Auth was successful!");
-             } else {
-               console.log("Auth was not successful");
-             }
-           }
-      );
-      return false;
-     });
+          if (authResult && !authResult.error) {
+            console.log("Auth was successful!");
+          } else {
+            console.log("Auth was not successful");
+          }
+        });
+
+        gapi.client.load('analytics', 'v3', makeApiCall);
+
+      };
+      function makeApiCall() {
+        var apiQuery = gapi.client.analytics.data.ga.get({
+          'ids': 'ga:76589940',
+          'start-date': '2013-11-26',
+          'end-date': '2013-12-10',
+          'metrics': 'ga:pageviews',
+          'dimensions': 'ga:pageTitle',
+          // 'sort': '-ga:visits,ga:source',
+          // 'filters': 'ga:medium==organic',
+          'max-results': 25
+        });
+        console.log(apiQuery);
+      }
     </script>
   </head>
   <body>
