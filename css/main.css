@@ -1,0 +1,11 @@
+.btn-main{
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 260px;
+}
+
+img{
+  width: 100%;
+  max-width: 400px;
+}

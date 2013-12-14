@@ -1,0 +1,27 @@
+{
+  "name": "sungood_book_value",
+  "version": "0.1.0",
+  "description": "sungood_book_value ==================",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jade": "~0.8.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jade": "~0.8.0",
+    "load-grunt-tasks": "~0.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yutin1987/sungood_book_value.git"
+  },
+  "author": "YuTin",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/yutin1987/sungood_book_value/issues"
+  },
+  "homepage": "https://github.com/yutin1987/sungood_book_value"
+}
