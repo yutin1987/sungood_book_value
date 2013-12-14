@@ -3,7 +3,8 @@ html
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title 書本名稱 by 桑格設計書店
+    title= name
+      |&nbsp;by&nbsp;桑格設計書店
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
     script(src='./js/jquery.min.js')
@@ -19,7 +20,7 @@ html
       // ga('create', 'UA-46465712-2', 'yutin1987.github.io');
       // ga('send', 'pageview');
   body
-    .container.marketing
+    .container.sungood
       .row
         .col-sm-12
           h2= name
@@ -27,16 +28,19 @@ html
         .col-sm-6
           img.img-thumbnail.img-responsive(src='cover/'+isbn+'.jpg', alt=name)
           h3 書本簡介
+          if about
+            each val, name in about
+              p: a(href=val,target="_blank")= name
           p
             | Null
         .col-sm-6
-          img.img-thumbnail.img-responsive(src=photo, alt=author)
+          img.img-thumbnail.img-responsive(src='author/'+isbn+'.jpg', alt=author)
           h3 作者介紹
           p
             = author
-          p
-            if linkedIn
-              a(href=linkedIn,target="_blank") LinkedIn
+          if social
+            each val, name in social
+              p: a(href=val,target="_blank")= name
           p
             | Null
       hr
