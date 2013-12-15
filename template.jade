@@ -19,21 +19,27 @@ html
           h2= name
       .row
         .col-sm-6
-          img.img-thumbnail.img-responsive(src='cover/'+isbn+'.jpg', alt=name)
           h3 書本簡介
+          img.img-thumbnail.img-responsive(src='cover/'+isbn+'.jpg', alt=name)
           if about
             each val, name in about
               p: a(href=val,target="_blank")= name
           p
             | Null
         .col-sm-6
-          img.img-thumbnail.img-responsive(src='author/'+isbn+'.jpg', alt=author)
           h3 作者介紹
+          if authors
+            each author, index in authors
+              div
+                if author.photo
+                  img.img-thumbnail.img-responsive(src='author/'+author.photo+'.jpg', alt=author.name)
+                p
+                  b= author.name
+                if author.social
+                  each item, name in author.social
+                    p: a(href=item,target="_blank")= name
           p
             = author
-          if social
-            each val, name in social
-              p: a(href=val,target="_blank")= name
           p
             | Null
       hr
